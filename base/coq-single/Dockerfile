@@ -88,6 +88,7 @@ RUN set -x \
   && opam switch create --jobs=${NJOBS} ${COMPILER} ${COMPILER_PACKAGE:+--package=}${COMPILER_PACKAGE} \
   && eval $(opam env) \
   && opam repository add --all-switches --set-default coq-released https://coq.inria.fr/opam/released \
+  && opam repository add --all-switches --set-default archive git+https://github.com/ocaml/opam-repository-archive \
   && opam update -y \
   && opam install -y -j 1 opam-depext \
   && opam pin add -n -k version ocamlfind ${OCAMLFIND_VERSION} \
