@@ -103,4 +103,4 @@ ENTRYPOINT ["opam", "exec", "--"]
 
 CMD ["/bin/bash", "--login"]
 
-LABEL maintainer="erik@martin-dorel.org"
+LABEL maintainer="sylvain.borgogno@inria.fr"
