@@ -68,9 +68,6 @@ images:
   - matrix: &matrix_408_up_flambda
       tag:
         - '4.11.2-flambda'
-        - '4.10.2-flambda'
-        - '4.09.1-flambda'
-        - '4.08.1-flambda'
     build: &build_408_up_flambda
       keywords: ['rocq']
       context: './base'
@@ -120,33 +117,6 @@ images:
       <<: *build_412_up_rocq
       keywords: ['coq']
       dockerfile: './coq-single/Dockerfile'
-      tags:
-        - tag: 'coq_{matrix[tag]}'
-  - matrix:
-      tag:
-        - '4.07.1-flambda'
-    build:
-      keywords: ['coq']
-      context: './base'
-      dockerfile: './coq-single/Dockerfile'
-      args:
-        COMPILER: '{matrix[tag][//-/+]}'
-        OCAMLFIND_VERSION: '1.9.1'
-      tags:
-        - tag: 'coq_{matrix[tag]}'
-  ####################################################
-  # compiler without flambda (for coq-native images) #
-  ####################################################
-  - matrix:
-      tag:
-        - '4.07.1'
-    build:
-      keywords: ['coq']
-      context: './base'
-      dockerfile: './coq-single/Dockerfile'
-      args:
-        COMPILER: '{matrix[tag]}'
-        OCAMLFIND_VERSION: '1.9.1'
       tags:
         - tag: 'coq_{matrix[tag]}'
   - matrix: &matrix_bare
