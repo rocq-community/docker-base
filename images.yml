@@ -52,6 +52,7 @@ propagate:
 images:
   - matrix: &matrix_412_up_flambda
       tag:
+        - '5.3.0-flambda'
         - '5.0.0-flambda'
         - '4.14.2-flambda'
         - '4.13.1-flambda'
@@ -81,6 +82,7 @@ images:
   #####################################################
   - matrix: &matrix_412_up
       tag:
+        - '5.3.0'
         - '5.0.0'
         - '4.14.2'
         - '4.13.1'
