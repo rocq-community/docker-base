@@ -85,6 +85,7 @@ ENV ZARITH_VERSION=${ZARITH_VERSION}
 # hadolint ignore=SC2046
 RUN set -x \
   && opam init --auto-setup --yes --bare --disable-sandboxing \
+  && opam repository add --all-switches --set-default --rank=-1 archive git+https://github.com/ocaml/opam-repository-archive \
   && opam switch create --jobs=${NJOBS} ${COMPILER} ${COMPILER_PACKAGE:+--package=}${COMPILER_PACKAGE} \
   && eval $(opam env) \
   && opam repository add --all-switches --set-default coq-released https://coq.inria.fr/opam/released \
