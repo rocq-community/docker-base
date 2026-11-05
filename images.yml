@@ -94,6 +94,28 @@ images:
         COMPILER: '{matrix[tag]}'
       tags:
         - tag: 'rocq_{matrix[tag]}'
+  ###############################################################
+  # OCaml >= 5.4: kept in separate blocks to override NUM_VERSION #
+  # (num 1.5-1 requires ocaml < 5.4) without touching the images #
+  # above. No coq_* variants: docker-coq uses no OCaml 5 base.   #
+  ###############################################################
+  - matrix: &matrix_54_up_flambda
+      tag:
+        - '5.4.1-flambda'
+    build:
+      <<: *build_412_up_flambda_rocq
+      args:
+        COMPILER: '{matrix[tag][//-/+]}'
+        COMPILER_PACKAGE: 'ocaml-variants.{matrix[tag][%-*]}+options,ocaml-option-flambda'
+        NUM_VERSION: '1.6'
+  - matrix: &matrix_54_up
+      tag:
+        - '5.4.1'
+    build:
+      <<: *build_412_up_rocq
+      args:
+        COMPILER: '{matrix[tag]}'
+        NUM_VERSION: '1.6'
   ##########################################################
   # !!! # "rocq-prover" requires "ocaml" >= "4.09.0" # !!! #
   ##########################################################
